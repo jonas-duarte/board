@@ -7,86 +7,87 @@ import {
   faChevronLeft,
   faFingerprint,
 } from "@fortawesome/free-solid-svg-icons";
+import ThemeConsumer from "../Theme";
 
 const openingTransition = {
-  transition: "all .5s ease-out",
+  transition:
+    "left .5s ease-out, right .5s ease-out, background-color 2s ease-out",
 };
 
 class GarageDoor extends Component {
-  state = { opened: false, showInfo: true, color: "#b8237a" };
+  state = { opened: false, showInfo: true };
+
+  componentDidMount = () => {
+    // this.handleDoorOpening();
+  };
 
   handleDoorOpening = () => {
-    let { opened, showInfo, color } = this.state;
+    let { opened, showInfo } = this.state;
     opened = !opened;
     if (opened) {
       showInfo = false;
     } else {
-      setTimeout(() => this.setState({ showInfo: true }), 600);
+      setTimeout(() => {
+        let { opened } = this.state;
+        if (!opened) this.setState({ showInfo: true });
+      }, 600);
     }
     this.setState({ opened, showInfo });
   };
 
-  handleChangeColor = (e) => {
-    let color = e.target.value;
-
-    const rgb = [color.substr(1, 2), color.substr(3, 2), color.substr(5, 2)];
-
-    color = `#${rgb.map((c) => (c > "f5" ? "f5" : c)).join("")}`;
-
-    this.setState({ color });
-  };
-
   render() {
-    const { opened, showInfo, color } = this.state;
+    const { opened, showInfo } = this.state;
     const { children, info } = this.props;
 
     return (
-      <div className="garage-door">
-        <div className="garage-door-content">{children}</div>
-        <div
-          className="garage-door-left"
-          style={{
-            ...openingTransition,
-            left: opened ? "-50%" : "0",
-            backgroundColor: color,
-          }}
-        >
-          <div className="garage-door-color-picker">
-            <input
-              type="color"
-              onChange={this.handleChangeColor}
-              value={color}
-            />
-            <label htmlFor="head">Color selector</label>
+      <ThemeConsumer>
+        {({ color, setColor }) => (
+          <div className="garage-door">
+            <div className="garage-door-content">{children}</div>
+            <div
+              className="garage-door-left"
+              style={{
+                ...openingTransition,
+                left: opened ? "-50%" : "0",
+                backgroundColor: color,
+              }}
+            >
+              <div className="garage-door-color-picker">
+                <input type="color" onChange={setColor} value={color} />
+                <label htmlFor="head">Color selector</label>
+              </div>
+            </div>
+            <div
+              className="garage-door-right"
+              style={{
+                ...openingTransition,
+                right: opened ? "-50%" : "0",
+                backgroundColor: color,
+              }}
+            >
+              <div
+                className="garage-door-unlock"
+                onClick={this.handleDoorOpening}
+                style={{
+                  ...openingTransition,
+                  justifyContent: opened ? "left" : "center",
+                  backgroundColor: color,
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={opened ? faChevronLeft : faFingerprint}
+                />
+              </div>
+              <SvgIcon></SvgIcon>
+            </div>
+            {showInfo ? (
+              <>
+                <div className="garage-door-info">{info}</div>
+              </>
+            ) : null}
           </div>
-        </div>
-        <div
-          className="garage-door-right"
-          style={{
-            ...openingTransition,
-            right: opened ? "-50%" : "0",
-            backgroundColor: color,
-          }}
-        >
-          <div
-            className="garage-door-unlock"
-            onClick={this.handleDoorOpening}
-            style={{
-              ...openingTransition,
-              justifyContent: opened ? "left" : "center",
-              backgroundColor: color,
-            }}
-          >
-            <FontAwesomeIcon icon={opened ? faChevronLeft : faFingerprint} />
-          </div>
-          <SvgIcon></SvgIcon>
-        </div>
-        {showInfo ? (
-          <>
-            <div className="garage-door-info">{info}</div>
-          </>
-        ) : null}
-      </div>
+        )}
+      </ThemeConsumer>
     );
   }
 }

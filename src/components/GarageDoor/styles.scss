@@ -14,7 +14,7 @@ $size-unlock-circle: 100px;
 
 .garage-door-left,
 .garage-door-right {
-  width: 50%;
+  width: calc(50% + 1px);
   height: 100%;
   position: absolute;
   top: 0;

@@ -1,0 +1,39 @@
+.contact-me {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+}
+
+.contact-me > button {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  outline: none;
+
+  height: 60px;
+  width: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 5px;
+  font-size: 45px;
+
+  border-radius: 100px;
+  box-shadow: 0 0 3px 3px white;
+
+  cursor: pointer;
+
+  transition: box-shadow 0.05s linear;
+}
+
+.contact-me > button:active {
+  box-shadow: 0 0 5px 5px white;
+}
+
+.my-infos {
+  margin-top: 95px;
+  text-align: center;
+}
