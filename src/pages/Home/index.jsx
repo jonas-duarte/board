@@ -1,4 +1,8 @@
-import { faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faInstagram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/fontawesome-free-regular";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -17,7 +21,7 @@ const Home = () => {
             <>
               <div className="contact-me">
                 <button>
-                  <FontAwesomeIcon icon={faInstagram} />
+                  <FontAwesomeIcon icon={faLinkedin} />
                 </button>
                 <button>
                   <FontAwesomeIcon icon={faGithub} />
