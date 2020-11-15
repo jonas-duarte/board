@@ -18,7 +18,7 @@ class GarageDoor extends Component {
   state = { opened: false, showInfo: true };
 
   componentDidMount = () => {
-    this.handleDoorOpening();
+    // this.handleDoorOpening();
   };
 
   handleDoorOpening = () => {
