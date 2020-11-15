@@ -18,7 +18,7 @@ class GarageDoor extends Component {
   state = { opened: false, showInfo: true };
 
   componentDidMount = () => {
-    // this.handleDoorOpening();
+    this.handleDoorOpening();
   };
 
   handleDoorOpening = () => {
@@ -52,10 +52,12 @@ class GarageDoor extends Component {
                 backgroundColor: color,
               }}
             >
-              <div className="garage-door-color-picker">
-                <input type="color" onChange={setColor} value={color} />
-                <label htmlFor="head">Color selector</label>
-              </div>
+              {showInfo ? (
+                <div className="garage-door-color-picker">
+                  <input type="color" onChange={setColor} value={color} />
+                  <label htmlFor="head">Color selector</label>
+                </div>
+              ) : null}
             </div>
             <div
               className="garage-door-right"
