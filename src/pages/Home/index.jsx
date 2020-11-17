@@ -20,15 +20,27 @@ const Home = () => {
           info={
             <>
               <div className="contact-me">
-                <button>
+                <a
+                  href="https://www.linkedin.com/in/jonas-rafael-duarte-dos-santos-7b8803105/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   <FontAwesomeIcon icon={faLinkedin} />
-                </button>
-                <button>
+                </a>
+                <a
+                  href="https://github.com/jonas-duarte"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   <FontAwesomeIcon icon={faGithub} />
-                </button>
-                <button>
+                </a>
+                <a
+                  href="mailto:jonasrdsantos@gmail.com"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   <FontAwesomeIcon icon={faEnvelope} />
-                </button>
+                </a>
               </div>
               <div className="my-infos">
                 <div>JONAS DOS SANTOS</div>

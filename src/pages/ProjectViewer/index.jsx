@@ -2,43 +2,13 @@ import { faReply, faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import ThemeConsumer from "../../components/Theme";
+import Projects from "../../projects";
 
 import "./styles.scss";
 
 const ROULETTE_SIZE = 6;
 
-const PROJECTS = [...Array(15).keys()].map((k, i) => ({
-  label: `TABLE ${i}`,
-  description: `The table ${i} is a great component to show data`,
-  component: (
-    <table style={{ border: "1px solid black" }}>
-      <thead>
-        <tr>
-          <th>dasdasdas {i}</th>
-          <th>dasdasdas {i}</th>
-          <th>dasdasdas {i}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ADKADKS {i}</td>
-          <td>ADKADKS {i}</td>
-          <td>ADKADKS {i}</td>
-        </tr>
-        <tr>
-          <td>ADKADKS {i}</td>
-          <td>ADKADKS {i}</td>
-          <td>ADKADKS {i}</td>
-        </tr>
-        <tr>
-          <td>ADKADKS {i}</td>
-          <td>ADKADKS {i}</td>
-          <td>ADKADKS {i}</td>
-        </tr>
-      </tbody>
-    </table>
-  ),
-}));
+const PROJECTS = Projects;
 
 function rangeConvertion(range, index) {
   return (((index + range) % range) + range) % range;

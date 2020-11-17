@@ -11,7 +11,7 @@ import ThemeConsumer from "../Theme";
 
 const openingTransition = {
   transition:
-    "left .5s ease-out, right .5s ease-out, background-color 2s ease-out",
+    "left .3s ease-out, right .3s ease-out, background-color 2s ease-out",
 };
 
 class GarageDoor extends Component {
@@ -30,7 +30,7 @@ class GarageDoor extends Component {
       setTimeout(() => {
         let { opened } = this.state;
         if (!opened) this.setState({ showInfo: true });
-      }, 600);
+      }, 325);
     }
     this.setState({ opened, showInfo });
   };

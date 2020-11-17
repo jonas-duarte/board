@@ -1,3 +1,5 @@
+@import "../../colors.scss";
+
 .contact-me {
   position: absolute;
   left: 10px;
@@ -5,7 +7,7 @@
   display: flex;
 }
 
-.contact-me > button {
+.contact-me > a {
   background-color: transparent;
   color: inherit;
   border: none;
@@ -22,15 +24,15 @@
   font-size: 45px;
 
   border-radius: 100px;
-  box-shadow: 0 0 3px 3px white;
+  box-shadow: 0 0 3px 3px $color-font;
 
   cursor: pointer;
 
   transition: box-shadow 0.05s linear;
 }
 
-.contact-me > button:active {
-  box-shadow: 0 0 5px 5px white;
+.contact-me > a:active {
+  box-shadow: 0 0 5px 5px $color-font;
 }
 
 .my-infos {
