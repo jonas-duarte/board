@@ -41,7 +41,7 @@ class GarageDoor extends Component {
 
     return (
       <ThemeConsumer>
-        {({ color, setColor }) => (
+        {({ color, textColor, shadowColor, setColor }) => (
           <div className="garage-door">
             <div className="garage-door-content">{children}</div>
             <div
@@ -53,7 +53,13 @@ class GarageDoor extends Component {
               }}
             >
               {showInfo ? (
-                <div className="garage-door-color-picker">
+                <div
+                  className="garage-door-color-picker"
+                  style={{
+                    color: textColor,
+                    textShadow: `0 0 10px ${shadowColor}`,
+                  }}
+                >
                   <input type="color" onChange={setColor} value={color} />
                   <label htmlFor="head">Color selector</label>
                 </div>
@@ -74,6 +80,8 @@ class GarageDoor extends Component {
                   ...openingTransition,
                   justifyContent: opened ? "left" : "center",
                   backgroundColor: color,
+                  boxShadow: `0 0 3px 3px ${textColor}`,
+                  color: `${textColor}88`,
                 }}
               >
                 <FontAwesomeIcon
@@ -84,7 +92,15 @@ class GarageDoor extends Component {
             </div>
             {showInfo ? (
               <>
-                <div className="garage-door-info">{info}</div>
+                <div
+                  className="garage-door-info"
+                  style={{
+                    color: textColor,
+                    textShadow: `0 0 10px ${shadowColor}`,
+                  }}
+                >
+                  {info}
+                </div>
               </>
             ) : null}
           </div>

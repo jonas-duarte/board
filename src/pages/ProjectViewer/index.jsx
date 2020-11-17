@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import ThemeConsumer from "../../components/Theme";
 import Projects from "../../projects";
+import StyleParser from "../../components/StyleParser";
 
 import "./styles.scss";
 
@@ -67,8 +68,11 @@ class ProjectViewer extends Component {
 
     return (
       <ThemeConsumer>
-        {({ color }) => (
-          <div className="project-viewer">
+        {({ color, textColor }) => (
+          <div
+            className="project-viewer"
+            style={{ backgroundColor: textColor }}
+          >
             <div
               className="project-viewer-project"
               style={{ backgroundColor: `${color}88` }}
@@ -82,7 +86,9 @@ class ProjectViewer extends Component {
               <div
                 className="select-wheel-circle"
                 style={{
+                  color: textColor,
                   backgroundColor: `${color}88`,
+                  boxShadow: `0 0 3px 3px ${textColor}`,
                   transform: `rotate(${(-project * 360) / ROULETTE_SIZE}deg)`,
                 }}
               >
@@ -100,18 +106,32 @@ class ProjectViewer extends Component {
                 ))}
               </div>
               <div className="select-wheel-navigator">
-                <button
-                  style={{ backgroundColor: `${color}88` }}
-                  onClick={this.handlePreviousProject}
-                >
-                  <FontAwesomeIcon icon={faReply} />
-                </button>
-                <button
-                  style={{ backgroundColor: `${color}88` }}
-                  onClick={this.handleNextProject}
-                >
-                  <FontAwesomeIcon icon={faShare} />
-                </button>
+                <StyleParser>
+                  <button
+                    style={{
+                      boxShadow: `0 0 3px 3px ${textColor}`,
+                      color: textColor,
+                      backgroundColor: `${color}88`,
+                      active: { boxShadow: `0 0 5px 5px ${textColor}` },
+                    }}
+                    onClick={this.handlePreviousProject}
+                  >
+                    <FontAwesomeIcon icon={faReply} />
+                  </button>
+                </StyleParser>
+                <StyleParser>
+                  <button
+                    style={{
+                      boxShadow: `0 0 3px 3px ${textColor}`,
+                      color: textColor,
+                      backgroundColor: `${color}88`,
+                      active: { boxShadow: `0 0 5px 5px ${textColor}` },
+                    }}
+                    onClick={this.handleNextProject}
+                  >
+                    <FontAwesomeIcon icon={faShare} />
+                  </button>
+                </StyleParser>
               </div>
             </div>
           </div>

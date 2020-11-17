@@ -4,7 +4,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: $color-font;
 }
 
 .project-viewer-title {
@@ -50,8 +49,6 @@ $select-wheel-size: 80vw;
   border: none;
   outline: none;
 
-  color: $color-font;
-
   font-size: calc(2vw + 2vh);
 
   display: flex;
@@ -65,11 +62,6 @@ $select-wheel-size: 80vw;
   height: 10vw;
 
   border-radius: 100px;
-  box-shadow: 0 0 3px 3px $color-font;
-}
-
-.select-wheel-navigator > button:active {
-  box-shadow: 0 0 5px 5px $color-font;
 }
 
 .select-wheel-circle {
@@ -79,7 +71,6 @@ $select-wheel-size: 80vw;
   height: $select-wheel-size;
 
   border-radius: 9999px;
-  box-shadow: 0 0 3px 3px $color-font;
 
   transition: transform 0.6s ease-in-out;
 }
@@ -99,7 +90,6 @@ $select-wheel-size: 80vw;
 .select-wheel-circle > div {
   position: absolute;
   text-align: center;
-  color: $color-font;
   font-size: 4vh;
   width: 100%;
   height: 100%;

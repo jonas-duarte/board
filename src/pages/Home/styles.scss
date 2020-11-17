@@ -24,15 +24,10 @@
   font-size: 45px;
 
   border-radius: 100px;
-  box-shadow: 0 0 3px 3px $color-font;
 
   cursor: pointer;
 
   transition: box-shadow 0.05s linear;
-}
-
-.contact-me > a:active {
-  box-shadow: 0 0 5px 5px $color-font;
 }
 
 .my-infos {

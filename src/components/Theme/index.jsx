@@ -14,7 +14,21 @@ function randomizeColor() {
 function validateColor(color) {
   const rgb = [color.substr(1, 2), color.substr(3, 2), color.substr(5, 2)];
 
-  return `#${rgb.map((c) => (c > "f5" ? "f5" : c)).join("")}`;
+  return `#${rgb.join("")}`;
+}
+
+function calcWhiteness(color) {
+  return [color.substr(1, 2), color.substr(3, 2), color.substr(5, 2)]
+    .map((c) => parseInt(`0x${c}`))
+    .reduce((a, b) => a + b);
+}
+
+function textColor(color) {
+  return calcWhiteness(color) > 500 ? "#000000" : "#ffffff";
+}
+
+function shadowColor(color) {
+  return calcWhiteness(color) > 500 ? "#ffffff" : "#000000";
 }
 
 export class ThemeProvider extends Component {
@@ -49,7 +63,12 @@ export class ThemeProvider extends Component {
     const { children } = this.props;
     return (
       <ThemeContext.Provider
-        value={{ color, setColor: this.handleChangeColor }}
+        value={{
+          color,
+          textColor: textColor(color),
+          shadowColor: shadowColor(color),
+          setColor: this.handleChangeColor,
+        }}
       >
         {children}
       </ThemeContext.Provider>
